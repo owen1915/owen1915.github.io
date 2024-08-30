@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>Isometric Game (UNFINISHED)</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background: url("res/mars.jpg") no-repeat center center; /* Center the background image */
+            background-size: cover;   /* Stretch the background to cover the screen */
+        }
+    </style>
+
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+<div class="container project">
+    <h1 style="color: antiquewhite">Isometric Engine</h1>
+    <hr>
+    <video width="1280" height="720" autoplay loop controls>
+        <source src="res/game.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <p class="video-description">
+        <br>
+        Very early version of the isometric game engine however, in the video above you can find a working chunk rendering
+        system and a ray tracing algorithm to detect where to correctly place the blocks based on which side of the
+        block you click on.
+        <br><br>
+        The engine is completely developed in Java and I've been working on this project for about a month now. At first I
+        started making a 2d game which is under another project tab called "Lizard King", however one of my best friends
+        has been working on an isometric game engine for awhile and I was very intrigued on how it worked. We were going to
+        collaborate and make a game together to further enhance our coding skills but life got in the way and he didn't really
+        want to rebuild his entire engine again but I needed to understand how it worked. So I created his game engine again
+        and this is the result.
+        <br><br>
+        I learned a lot about developing while making this engine, even though its still very primative. The biggest thing
+        I have learned is how optimized some games really are and how important it is to fully optimize your software. When
+        you are drawing to the screen 60 times per second, you have to make each draw call take less than 16.67ms. Another tip
+        I learned was to whenever developing software, imagine you're developing it for a toaster or a calculator. Otherwise
+        you will get caught up in next gen hardware that not everyone can afford.
+    </p>
+</div>
+
+</body>
+</html>

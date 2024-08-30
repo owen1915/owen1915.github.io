@@ -1,0 +1,57 @@
+.container.index{
+    justify-content: center;   /* Center items vertically */
+    align-items: center;       /* Center items horizontally */
+    text-align: center;        /* Center inline elements and text */
+    background: rgba(0, 0, 0, .4);     /* Background color */
+    padding: 10px;             /* Add some padding for spacing */
+    margin: 0 auto;            /* Center the container itself if needed */
+    width: auto;               /* Automatically adjust the width based on content */
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+}
+
+.container.project{
+    justify-content: center;   /* Center items vertically */
+    align-items: center;       /* Center items horizontally */
+    text-align: center;        /* Center inline elements and text */
+    background: rgba(0, 0, 0, .4);     /* Background color */
+    padding: 10px;             /* Add some padding for spacing */
+    margin: 0 auto;            /* Center the container itself if needed */
+    width: auto;               /* Automatically adjust the width based on content */
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+}
+
+.button {
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    border-radius: 5px;
+    padding: 10px 20px; /* Controls space around the text */
+    font-family: "Times New Roman";
+    color: white;
+    font-size: 32px;    /* Font size of the text */
+    border: 2px solid rgba(255, 255, 255, .2);
+    cursor: pointer;
+    white-space: nowrap; /* Prevents text wrapping */
+    text-align: center;  /* Centers text within the button */
+}
+
+.button:hover {
+    color: darkgray;                /* Changes text color on hover */
+}
+
+video {
+    max-width: 100%; /* Ensure the video scales with the container */
+    height: auto;    /* Maintain the video aspect ratio */
+}
+
+.video-description {
+    max-width: 1280px; /* Set the max width to match the video's width */
+    font-family: "Times New Roman";
+    font-size: 20px;
+    color: wheat;      /* Text color */
+    margin: 0 auto;    /* Center the paragraph */
+    text-align: left;  /* Align text to the left */
+}

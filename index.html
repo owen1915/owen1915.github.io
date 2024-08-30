@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <title>Welp</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;            /* Set the height to full viewport height */
+            margin: 0;
+            background: url("res/mars.jpg") no-repeat center center; /* Center the background image */
+            background-size: cover;   /* Stretch the background to cover the screen */
+        }
+    </style>
+
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+<div class="container index">
+    <h1 style="color: antiquewhite">Welp</h1>
+    <hr>
+    <button onclick="openLink('https://www.youtube.com/@welp444')" class="button">Youtube</button>
+    <button onclick="openPage('isometric.html')" class="button">Projects</button>
+</div>
+
+<script>
+    function openLink(link) {
+        window.open(link,'_blank');
+    }
+    function openPage(page) {
+        window.location.href = page;
+    }
+</script>
+</body>
+</html>
