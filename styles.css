@@ -47,6 +47,10 @@ video {
     height: auto;    /* Maintain the video aspect ratio */
 }
 
+a {
+    text-decoration: none;
+}
+
 .video-description {
     max-width: 1280px; /* Set the max width to match the video's width */
     font-family: "Times New Roman";
