@@ -24,6 +24,14 @@
     backdrop-filter: blur(20px);
 }
 
+title h1{
+    color: antiquewhite;
+}
+
+.title:hover h1{
+    color: darkgray;
+}
+
 .button {
     background-color: transparent;
     backdrop-filter: blur(20px);
@@ -49,6 +57,14 @@ video {
 
 a {
     text-decoration: none;
+}
+
+a:visited {
+    color: antiquewhite; /* Color for visited links */
+}
+
+a:hover {
+    color: darkgray; /* Color when hovered */
 }
 
 .video-description {
