@@ -6,17 +6,12 @@
     <style>
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: auto;
-            margin: 0;
-            background: url("res/mars.jpg") no-repeat center center; /* Center the background image */
-            background-size: cover;   /* Stretch the background to cover the screen */
+            background: #f0f0f0 url('/res/mars.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
     </style>
 
-    <link rel="stylesheet" href="styles.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Link to the CSS file -->
 </head>
 <body>
 <div class="container project">
@@ -27,7 +22,7 @@
     </div>
     <hr>
     <video width="1280" height="720" autoplay loop controls>
-        <source src="res/game.mp4" type="video/mp4">
+        <source src="../res/game.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <p class="video-description">

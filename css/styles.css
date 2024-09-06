@@ -69,8 +69,8 @@ a:hover {
 
 .video-description {
     max-width: 1280px; /* Set the max width to match the video's width */
-    font-family: "Times New Roman";
-    font-size: 20px;
+    font-family: "Times New Roman", fantasy;
+    font-size: 24px;
     color: wheat;      /* Text color */
     margin: 0 auto;    /* Center the paragraph */
     text-align: left;  /* Align text to the left */
