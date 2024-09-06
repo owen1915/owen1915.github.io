@@ -39,6 +39,7 @@ title h1{
     padding: 10px 20px; /* Controls space around the text */
     font-family: "Times New Roman";
     color: white;
+    font-weight: bold;
     font-size: 32px;    /* Font size of the text */
     border: 2px solid rgba(255, 255, 255, .2);
     cursor: pointer;
@@ -74,4 +75,17 @@ a:hover {
     color: wheat;      /* Text color */
     margin: 0 auto;    /* Center the paragraph */
     text-align: left;  /* Align text to the left */
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-family: "Times New Roman", fantasy;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
 }
