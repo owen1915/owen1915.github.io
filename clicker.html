@@ -4,27 +4,111 @@
     <meta charset="UTF-8">
     <title>Clicker Game</title>
   <style>
-    body {
-      background: #f0f0f0 url('/res/image.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
+      body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          background: navajowhite;
+          align-items: center; /* Center the content horizontally */
+      }
 
-    container {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+      .container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center; /* Center content vertically */
+          align-items: center;     /* Center content horizontally */
+          background-color: rosybrown;
+          border-radius: 10px; /* Adjust the value for more or less rounding */
+          padding: 10px;
+          position: relative;
+          top: 12vh;
+          width: 80%; /* Set a width less than 100% of the viewport */
+          max-width: 600px; /* Optional: Limit the maximum width */
+      }
 
-    amnt {
-        color: white;
-    }
+      .button-shop {
+          font-size: x-large;
+          border: 4px solid rgba(255, 255, 255, .2);
+          backdrop-filter: blur(10px);
+          border-radius: 3px;
+          color: white;
+          background-color: rgba(0, 0, 0, .3);
+          font-family: "Times New Roman",serif;
+          cursor: pointer;
 
+
+          /* Add padding to space the text inside the button */
+          padding: 10px;
+          text-align: center; /* Ensures the text is centered inside each column */
+      }
+      .button-shop:hover {
+          color: darkgray;
+      }
+
+      .shop {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          background-color: rosybrown;
+          border-radius: 10px; /* Adjust the value for more or less rounding */
+          padding: 10px;
+          width: 100%; /* Set it to fill the width of the container */
+          justify-content: space-around; /* Space out the buttons */
+      }
+
+      .amnt {
+          color: beige;
+      }
   </style>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link to the CSS file -->
 </head>
 <body>
+    <div class="header" style="font-size: 1.25vw">
+        <a href="https://owengoodman.com" class="styled-link">
+            owengoodman.com
+        </a></div>
     <div class="container">
-        <div class="amnt">Amount</div>
+        <div class="amnt">Cookies</div>
+        <br>
+        <div id="output"></div>
+        <div class="shop">
+            <button onclick="buy(cursor)" class="button-shop">
+                Clicker
+                <br>
+                <span id="cursorprice" style="display: inline-block;"></span> cookies
+            </button>
+        </div>
     </div>
 </body>
+
+<script>
+    let cookies = 0;
+    let cursor = 0;
+    let cursorprice = 1;
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("output").innerHTML = Math.floor(cookies);
+        document.getElementById("cursorprice").innerHTML = Math.floor(cursorprice);
+
+        function addCookies() {
+            cookies += (cursor * .1);
+            cookies++;
+            document.getElementById("output").innerHTML = Math.floor(cookies);
+        }
+
+        setInterval(addCookies, 1000);
+    });
+
+    function buy(item) {
+        if (item === cursor && cookies >= cursorprice) {
+            cookies -= cursorprice;
+            cursorprice *= 2;
+            cursor++;
+            document.getElementById("cursorprice").innerHTML = Math.floor(cursorprice);
+            document.getElementById("output").innerHTML = Math.floor(cookies);
+        }
+    }
+
+</script>
+
 </html>

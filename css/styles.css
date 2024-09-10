@@ -37,7 +37,7 @@ title h1{
     backdrop-filter: blur(20px);
     border-radius: 5px;
     padding: 10px 20px; /* Controls space around the text */
-    font-family: "Times New Roman";
+    font-family: "Times New Roman", serif;
     color: white;
     font-weight: bold;
     font-size: 32px;    /* Font size of the text */
@@ -90,6 +90,28 @@ a:hover {
     justify-content: center; /* Horizontally center the text */
     padding: 0 20px; /* Optional padding */
     box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: center; /* Center content vertically */
+    align-items: center;     /* Center content horizontally */
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    height: auto;
+    color: white;
+    text-decoration: none;
+}
+
+.styled-link {
+    text-decoration: none;                 /* Sets the link color */
+    font-weight: bold;              /* Makes the text bold */
+    cursor: pointer;                /* Changes the cursor to a pointer */
+    padding: 10px;                  /* Adds padding around the text */
+    border-radius: 10px;             /* Rounds the corners */
+    transition: background-color .3s, color .3s; /* Smooth transition */
 }
 
 /* Styling for the text */
