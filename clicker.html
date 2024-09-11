@@ -20,7 +20,7 @@
           flex-direction: column;
           justify-content: center; /* Center content vertically */
           align-items: center;     /* Center content horizontally */
-          background-color: rosybrown;
+          background-color: rgba(0, 0, 0, .5);
           border-radius: 10px; /* Adjust the value for more or less rounding */
           padding: 10px;
           position: relative;
@@ -31,14 +31,13 @@
 
       .button-shop {
           font-size: x-large;
-          border: 4px solid rgba(255, 255, 255, .2);
+          border: 4px solid rgba(255, 255, 255, .8);
           backdrop-filter: blur(10px);
           border-radius: 3px;
           color: white;
           background-color: rgba(0, 0, 0, .3);
           font-family: "Times New Roman",serif;
           cursor: pointer;
-
 
           /* Add padding to space the text inside the button */
           padding: 10px;
@@ -52,7 +51,6 @@
           display: flex;
           flex-direction: row;
           align-items: flex-start;
-          background-color: rosybrown;
           border-radius: 10px; /* Adjust the value for more or less rounding */
           padding: 10px;
           width: 100%; /* Set it to fill the width of the container */
@@ -71,45 +69,65 @@
             owengoodman.com
         </a></div>
     <div class="container">
-        <div class="amnt">Cookies</div>
+        <div class="amnt" style="font-size: x-large">MONEY</div>
         <br>
-        <div id="output"></div>
+        <div id="money" style="font-size: xx-large"></div>
+        <div id="perTic" style="font-size: xx-large"></div>
         <div class="shop">
             <button onclick="buy(cursor)" class="button-shop">
                 Clicker
                 <br>
-                <span id="cursorprice" style="display: inline-block;"></span> cookies
+                <span id="cursorprice" style="display: inline-block;"></span>$
+            </button>
+            <button onclick="buy(bakery)" class="button-shop">
+                Bakery
+                <br>
+                <span id="bakeryprice" style="display: inline-block;"></span>$
             </button>
         </div>
     </div>
 </body>
 
 <script>
-    let cookies = 0;
+    let money = 0;
     let cursor = 0;
+    let bakery = 0;
     let cursorprice = 1;
+    let bakeryprice = 100;
+    let moneyPerTic = 1;
 
     document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("output").innerHTML = Math.floor(cookies);
+        document.getElementById("money").innerHTML = Math.floor(money) + "$";
         document.getElementById("cursorprice").innerHTML = Math.floor(cursorprice);
+        document.getElementById("bakeryprice").innerHTML = Math.floor(bakeryprice);
+        document.getElementById("perTic").innerHTML = Math.floor(moneyPerTic) + "$ per second";
 
-        function addCookies() {
-            cookies += (cursor * .1);
-            cookies++;
-            document.getElementById("output").innerHTML = Math.floor(cookies);
+        function addMoney() {
+            money += moneyPerTic;
+            document.getElementById("money").innerHTML = Math.floor(money) + "$";
         }
 
-        setInterval(addCookies, 1000);
+        setInterval(addMoney, 1000);
     });
 
     function buy(item) {
-        if (item === cursor && cookies >= cursorprice) {
-            cookies -= cursorprice;
+        if (item === cursor && money >= cursorprice) {
+            money -= cursorprice;
             cursorprice *= 2;
             cursor++;
             document.getElementById("cursorprice").innerHTML = Math.floor(cursorprice);
-            document.getElementById("output").innerHTML = Math.floor(cookies);
+            document.getElementById("money").innerHTML = Math.floor(money) + "$";
+        } else if (item === bakery && money >= bakeryprice) {
+            money -= bakeryprice;
+            bakeryprice *= 2;
+            bakery++;
+            document.getElementById("bakeryprice").innerHTML = Math.floor(bakeryprice);
+            document.getElementById("money").innerHTML = Math.floor(money) + "$";
         }
+        moneyPerTic = 1;
+        moneyPerTic += (cursor * .1);
+        moneyPerTic += (bakery * 10);
+        document.getElementById("perTic").innerHTML = moneyPerTic.toFixed(1) + "$ per second";
     }
 
 </script>
