@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <title>owengoodman.com</title>
-
     <style>
         body {
-
             background: #f0f0f0 url('/res/mars.jpg') no-repeat center center fixed;
             background-size: cover;
         }
@@ -13,24 +11,85 @@
             position: absolute;
             top: 10px;
             left: 50%;
-            font-size: 24px;
+            transform: translateX(-50%);
+            font-size: 28px;
             font-weight: bold;
             color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+        }
+        .title:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .education-box, .about-box {
+            position: relative;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 8px;
+            color: black;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .education-box h2, .about-box h2 {
+            font-size: 26px;
+            margin: 0; /* Remove any margin from the header */
+        }
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer-text a {
+            color: inherit;
+            text-decoration: none;
         }
     </style>
     <link rel="stylesheet" href="css/styles.css"> <!-- Link to the CSS file -->
 </head>
 <body>
 
-<div class="title">
-    EDUCATION
+<a href="index.html" class="title">
+    owengoodman.com
+</a>
+
+<div class="education-box">
+    <h2>EDUCATION</h2>
+    <p>I have my high school diploma from Open High School, which is a highly ranked specialty school in Virginia.
+        While studying at Open High School, I dual-enrolled at J Sargent Reynolds Community College and attained my 2-year
+        associate's degree. I am currently in my sophomore year at Virginia Tech, pursuing a Bachelor's (and potentially a Master's)
+        in Computer Science.</p>
 </div>
 
+<div class="about-box">
+    <h2>ABOUT ME</h2>
+    <p>My name is Owen Goodman, and I grew up in Richmond, Virginia. I've always been a competitive person, soccer was my
+        game back in the day, but now I channel that energy into everything I do. I come from a hardworking family; my mother
+        is a teacher, and my father is an accountant, and they've instilled in me a strong work ethic that's become second nature.
+
+        I genuinely love coding. For me, it's more than just writing lines of code, it's the thrill of solving challenging
+        problems and creating something meaningful. It's the reason I can lose myself at my desk for hours, feeling like
+        no time has passed at all. I think that's what sets me apart from many of my peers: coding isn't just a skill I'm
+        learning, it's something I'm passionate about. I thrive on the challenge, and I'm always hungry for the next problem to solve.</div>
 
 <div class="fixed-footer">
     <div class="footer-text">
-        <a href="mailto:owengoodman3@gmail.com" style="color: inherit; text-decoration: none;">owengoodman3@gmail.com</a>
+        <a href="mailto:owengoodman3@gmail.com">owengoodman3@gmail.com</a>
     </div>
 </div>
 
 </body>
+</html>
