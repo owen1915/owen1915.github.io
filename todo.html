@@ -10,6 +10,11 @@
     <h2>Add a Todo</h2>
     <input id="new-title" placeholder="Enter task" />
     <button onclick="addTodo()">Add</button>
+    <h2>Delete by ID</h2>
+    <input id="id" placeholder="Enter ID" />
+    <button onclick="deleteTodoById()">Delete ID</button>
+    <h2>Clear the List</h2>
+    <button onclick="deleteTodos()">Clear List</button>
 
     <script>
         function fetchTodos() {
@@ -20,11 +25,28 @@
                     list.innerHTML = "";
                     todos.forEach(todo => { 
                         const li = document.createElement("li");
-                        li.textContent = `${todo.title} [${todo.completed ? "✓" : " "}]`;
+                        li.textContent = `${todo.title} [${todo.completed ? "✓" : " "}] ${todo.id}`;
                         list.appendChild(li);
                     });
                 });
         }    
+        function deleteTodos() {
+            fetch("https://todoapi-35vd.onrender.com/api/todos", {
+                method: "DELETE"
+            })
+            .then(() => {
+                document.getElementById("new-title").value = "";
+                fetchTodos();
+            });
+        } 
+        function deleteTodoById() {
+            fetch(`https://todoapi-35vd.onrender.com/api/todos/${document.getElementById("id").value}`, {
+                method: "DELETE"
+            })
+            .then(() => {
+                fetchTodos();
+            });
+        }
         function addTodo() {
             const title = document.getElementById("new-title").value;
             fetch("https://todoapi-35vd.onrender.com/api/todos", {
