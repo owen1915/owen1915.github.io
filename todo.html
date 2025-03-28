@@ -3,10 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
+    <style>
+        
+        .center-list {
+            display: flex;
+            justify-content: center;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        #todo-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .todo-container {
+            max-width: 70%;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        #todo-table th,
+        #todo-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Zebra striping */
+        #todo-list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Scrollable table body (5 rows high) */
+        .table-wrapper {
+            max-height: 40vh; /* Adjust based on row height */
+            overflow-y: auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Sticky header */
+        #todo-table thead th {
+            position: sticky;
+            top: 0;
+            background-color: #8c8484;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    <h1>My Todo List using SpringBoot</h1>
-    <ul id="todo-list"></ul>
+    <h1 style="text-align: center; ">To-Do List</h1>
+    <h4 style="text-align: center; ">A Program designed with SpringBoot</h4>
+    <div class="todo-container">
+        <div class="center-list table-wrapper">
+            <table id="todo-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Completed</th>
+                        <th>ID</th>
+                    </tr>
+                </thead>
+                <tbody id="todo-list">
+                </tbody>
+            </table>
+        </div>
+    </div>
     <h2>Add a Todo</h2>
     <input id="new-title" placeholder="Enter task" />
     <button onclick="addTodo()">Add</button>
@@ -27,9 +90,22 @@
                     const list = document.getElementById("todo-list");
                     list.innerHTML = "";
                     todos.forEach(todo => { 
-                        const li = document.createElement("li");
-                        li.textContent = `${todo.title} [${todo.completed ? "✓" : " "}] ${todo.id}`;
-                        list.appendChild(li);
+                        const row = document.createElement("tr");
+
+                        const titleCell = document.createElement("td");
+                        titleCell.textContent = todo.title;
+
+                        const completedCell = document.createElement("td");
+                        completedCell.textContent = todo.completed ? "✓" : " ";
+
+                        const idCell = document.createElement("td");
+                        idCell.textContent = todo.id;
+
+                        row.appendChild(titleCell);
+                        row.appendChild(completedCell);
+                        row.appendChild(idCell);
+
+                        list.appendChild(row);
                     });
                 });
         }    
@@ -38,6 +114,7 @@
                 method: "PUT"
             })
             .then(() => {
+                document.getElementById("uID").value = "";
                 fetchTodos();
             });
         }
@@ -55,6 +132,7 @@
                 method: "DELETE"
             })
             .then(() => {
+                document.getElementById("dID").value = "";
                 fetchTodos();
             });
         }
