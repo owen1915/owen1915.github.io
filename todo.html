@@ -10,8 +10,11 @@
     <h2>Add a Todo</h2>
     <input id="new-title" placeholder="Enter task" />
     <button onclick="addTodo()">Add</button>
+    <h2>Update by ID</h2>
+    <input id="uID" placeholder="Enter ID" />
+    <button onclick="updateID()">Update ID</button>
     <h2>Delete by ID</h2>
-    <input id="id" placeholder="Enter ID" />
+    <input id="dID" placeholder="Enter ID" />
     <button onclick="deleteTodoById()">Delete ID</button>
     <h2>Clear the List</h2>
     <button onclick="deleteTodos()">Clear List</button>
@@ -30,6 +33,14 @@
                     });
                 });
         }    
+        function updateID() {
+            fetch(`https://todoapi-35vd.onrender.com/api/todos/${document.getElementById("uID").value}`, {
+                method: "PUT"
+            })
+            .then(() => {
+                fetchTodos();
+            });
+        }
         function deleteTodos() {
             fetch("https://todoapi-35vd.onrender.com/api/todos", {
                 method: "DELETE"
@@ -40,7 +51,7 @@
             });
         } 
         function deleteTodoById() {
-            fetch(`https://todoapi-35vd.onrender.com/api/todos/${document.getElementById("id").value}`, {
+            fetch(`https://todoapi-35vd.onrender.com/api/todos/${document.getElementById("dID").value}`, {
                 method: "DELETE"
             })
             .then(() => {
