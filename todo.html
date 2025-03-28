@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
 </head>
-<title>Todo List</title>
 <body>
-    <ht>My Todo List using SpringBoot</ht>
+    <h1>My Todo List using SpringBoot</h1>
     <ul id="todo-list"></ul>
     <h2>Add a Todo</h2>
     <input id="new-title" placeholder="Enter task" />
@@ -12,7 +13,7 @@
 
     <script>
         function fetchTodos() {
-            fetch("http://localhost:8080/api/todos")
+            fetch("https://todoapi-35vd.onrender.com/api/todos")
                 .then(res => res.json())
                 .then(todos => {    
                     const list = document.getElementById("todo-list");
@@ -26,7 +27,7 @@
         }    
         function addTodo() {
             const title = document.getElementById("new-title").value;
-            fetch("http://localhost:8080/api/todos", {
+            fetch("https://todoapi-35vd.onrender.com/api/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title: title, completed: false })
