@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+</head>
+<title>Todo List</title>
+<body>
+    <ht>My Todo List using SpringBoot</ht>
+    <ul id="todo-list"></ul>
+    <h2>Add a Todo</h2>
+    <input id="new-title" placeholder="Enter task" />
+    <button onclick="addTodo()">Add</button>
+
+    <script>
+        function fetchTodos() {
+            fetch("http://localhost:8080/api/todos")
+                .then(res => res.json())
+                .then(todos => {    
+                    const list = document.getElementById("todo-list");
+                    list.innerHTML = "";
+                    todos.forEach(todo => { 
+                        const li = document.createElement("li");
+                        li.textContent = `${todo.title} [${todo.completed ? "✓" : " "}]`;
+                        list.appendChild(li);
+                    });
+                });
+        }    
+        function addTodo() {
+            const title = document.getElementById("new-title").value;
+            fetch("http://localhost:8080/api/todos", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title: title, completed: false })
+            })
+            .then(() => {
+                document.getElementById("new-title").value = "";
+                fetchTodos();
+            });
+        }
+        fetchTodos()
+    </script>
+</body>
+</html>
