@@ -103,9 +103,6 @@
         <h2 style="margin-top: 5px;">Add a Todo</h2>
         <input id="new-title" placeholder="Enter task" />
         <button onclick="addTodo()">Add</button>
-        <h2>Update by ID</h2>
-        <input id="uID" placeholder="Enter ID" />
-        <button onclick="updateID()">Update ID</button>
         <h2>Delete by ID</h2>
         <input id="dID" placeholder="Enter ID" />
         <button onclick="deleteTodoById()">Delete ID</button>
@@ -139,20 +136,24 @@
                         row.appendChild(completedCell);
                         row.appendChild(idCell);
 
-                        row.addEventListener("click", () => {
-                            row.style.backgroundColor = "#cce5ff"; // Light blue
-                        });
+                        completedCell.style.color = todo.completed ? "green" : "red";
 
+                        row.addEventListener("click", () => {
+                            const cells = row.children;
+                            todo.completed = !todo.completed;
+                            cells[1].textContent = todo.completed ? "✓" : "✗";
+                            completedCell.style.color = todo.completed ? "green" : "red";
+                            updateID(todo.id);
+                        });
                         list.appendChild(row);
                     });
                 });
         }    
-        function updateID() {
-            fetch(`https://todoapi-35vd.onrender.com/api/todos/${document.getElementById("uID").value}`, {
+        function updateID(id) {
+            fetch(`https://todoapi-35vd.onrender.com/api/todos/${id}`, {
                 method: "PUT"
             })
             .then(() => {
-                document.getElementById("uID").value = "";
                 fetchTodos();
             });
         }
