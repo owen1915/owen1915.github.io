@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <title>Todo List</title>
     <style>
-        
+        .question-container {
+            max-width: 70%;
+            margin: 0 auto;
+            width: 100%;
+            margin-top: 10px;
+            background-color: rgb(206, 202, 202);
+            border: 2px solid black;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+        .question-container h2 {
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
         .center-list {
             display: flex;
             justify-content: center;
+            
         }
         ul {
             list-style-type: none;
@@ -22,39 +36,54 @@
             max-width: 70%;
             margin: 0 auto;
             width: 100%;
+            border: 2px solid black;
         }
 
         #todo-table th,
         #todo-table td {
             padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
 
-        /* Zebra striping */
         #todo-list tr:nth-child(even) {
             background-color: #f2f2f2;
         }
 
-        /* Scrollable table body (5 rows high) */
-        .table-wrapper {
-            max-height: 40vh; /* Adjust based on row height */
-            overflow-y: auto;
-            border: 1px solid #ccc;
+        #todo-list tr:hover {
+            background-color: lightblue;
         }
 
-        /* Sticky header */
+        .table-wrapper {
+            max-height: 40vh;
+            overflow-y: auto;
+        }
+
         #todo-table thead th {
             position: sticky;
             top: 0;
             background-color: #8c8484;
             z-index: 1;
         }
+        h1 {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        p, input, button {
+            font-size: 1rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+        }
+        html {
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center; ">To-Do List</h1>
-    <h4 style="text-align: center; ">A Program designed with SpringBoot</h4>
+    <h1 style="text-align: center; padding: 0; margin: 0;">To-Do List</h1>
+    <h3 style="text-align: center; padding: 0; margin-top: 0px; margin-bottom: 8px;">A Program designed with SpringBoot</h3>
     <div class="todo-container">
         <div class="center-list table-wrapper">
             <table id="todo-table">
@@ -70,17 +99,22 @@
             </table>
         </div>
     </div>
-    <h2>Add a Todo</h2>
-    <input id="new-title" placeholder="Enter task" />
-    <button onclick="addTodo()">Add</button>
-    <h2>Update by ID</h2>
-    <input id="uID" placeholder="Enter ID" />
-    <button onclick="updateID()">Update ID</button>
-    <h2>Delete by ID</h2>
-    <input id="dID" placeholder="Enter ID" />
-    <button onclick="deleteTodoById()">Delete ID</button>
-    <h2>Clear the List</h2>
-    <button onclick="deleteTodos()">Clear List</button>
+    <div class="question-container">
+        <h2 style="margin-top: 5px;">Add a Todo</h2>
+        <input id="new-title" placeholder="Enter task" />
+        <button onclick="addTodo()">Add</button>
+        <h2>Update by ID</h2>
+        <input id="uID" placeholder="Enter ID" />
+        <button onclick="updateID()">Update ID</button>
+        <h2>Delete by ID</h2>
+        <input id="dID" placeholder="Enter ID" />
+        <button onclick="deleteTodoById()">Delete ID</button>
+        <h2>Clear the List</h2>
+        <button onclick="deleteTodos()">Clear List</button>    
+    </div>
+
+    <h6 style="text-align: center; padding-top: 2px; margin: 0; padding-bottom: 4px;">*Uses a free application to host SpringBoot so expect delays on the first use*</h6>
+    
 
     <script>
         function fetchTodos() {
@@ -96,7 +130,7 @@
                         titleCell.textContent = todo.title;
 
                         const completedCell = document.createElement("td");
-                        completedCell.textContent = todo.completed ? "✓" : " ";
+                        completedCell.textContent = todo.completed ? "✓" : "✗";
 
                         const idCell = document.createElement("td");
                         idCell.textContent = todo.id;
@@ -104,6 +138,10 @@
                         row.appendChild(titleCell);
                         row.appendChild(completedCell);
                         row.appendChild(idCell);
+
+                        row.addEventListener("click", () => {
+                            row.style.backgroundColor = "#cce5ff"; // Light blue
+                        });
 
                         list.appendChild(row);
                     });
