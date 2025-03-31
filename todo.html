@@ -115,7 +115,7 @@
 
     <script>
         function fetchTodos() {
-            fetch("https://todoapi-35vd.onrender.com/api/todos")
+            fetch("https://todoapi-eb3r-q.fly.dev/api/todos")
                 .then(res => res.json())
                 .then(todos => {    
                     const list = document.getElementById("todo-list");
@@ -150,7 +150,7 @@
                 });
         }    
         function updateID(id) {
-            fetch(`https://todoapi-35vd.onrender.com/api/todos/${id}`, {
+            fetch(`https://todoapi-eb3r-q.fly.dev/api/todos/${id}`, {
                 method: "PUT"
             })
             .then(() => {
@@ -158,7 +158,7 @@
             });
         }
         function deleteTodos() {
-            fetch("https://todoapi-35vd.onrender.com/api/todos", {
+            fetch("https://todoapi-eb3r-q.fly.dev/api/todos", {
                 method: "DELETE"
             })
             .then(() => {
@@ -167,7 +167,7 @@
             });
         } 
         function deleteTodoById() {
-            fetch(`https://todoapi-35vd.onrender.com/api/todos/${document.getElementById("dID").value}`, {
+            fetch(`https://todoapi-eb3r-q.fly.dev/api/todos/${document.getElementById("dID").value}`, {
                 method: "DELETE"
             })
             .then(() => {
@@ -177,7 +177,7 @@
         }
         function addTodo() {
             const title = document.getElementById("new-title").value;
-            fetch("https://todoapi-35vd.onrender.com/api/todos", {
+            fetch("https://todoapi-eb3r-q.fly.dev/api/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title: title, completed: false })
