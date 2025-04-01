@@ -13,17 +13,29 @@
             overscroll-behavior: none;
         }
 
+        a {
+            text-decoration: none; 
+            color: inherit;
+        }
+
+        a:hover {
+            color: #7f7f80;
+        }
+
         .pageContainer {
             display: flex;
             flex-direction: column;
             align-items: center; /* optional, centers horizontally */
             gap: 5vh; /* space between components */
             padding-bottom: 5vh;
+            padding-top: 5vh;
         }
 
         .header {
             font-size: 1.7rem;
             text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
         }
 
         .tabContainer {
@@ -33,9 +45,8 @@
 
         .headerContainer {
             width: 100%;
-            border: 3px solid black;
-            background: #0a0606a7;
-            color: rgba(191, 191, 191, 0.912);
+            color: rgba(28, 27, 27, 0.912);
+            
         }
 
         .textContainer {
@@ -103,6 +114,13 @@
             margin-top: 0;
         }
 
+        .textContainerImg {
+            width: 95%;
+            height: auto;
+            margin: 2.5%;
+            margin-top: 0;
+        }
+
     </style>
 
 </head> 
@@ -110,14 +128,18 @@
 
     <div class="pageContainer">
         <div class="headerContainer">
-            <div class="header">Owen Goodman</div>
+            <div class="header">
+            <a href="https://owengoodman.com">
+                owengoodman.com
+            </a>
+            </div>
         </div>
         <div class="textContainer">
             <h1>About</h1>
             <div class="pictureText">
                 <p>I'm a results-driven software developer with a passion for creating thoughtful, efficient, and user-focused solutions. I take pride in writing clean, maintainable code and approaching
                      problems with a balance of creativity and precision. With experience across multiple layers of the development process, I thrive in environments that value continuous learning, 
-                     collaboration, and high-quality work. My goal is to build technology that makes an impact whether through solving real-world problems or enhancing the user experience.</p>
+                     collaboratison, and high-quality work. My goal is to build technology that makes an impact whether through solving real-world problems or enhancing the user experience.</p>
                 <img 
   src="https://media.licdn.com/dms/image/v2/D4E03AQG5l2XDkwDDsQ/profile-displayphoto-shrink_400_400/B4EZXK.prIGwAk-/0/1742867177678?e=1749081600&v=beta&t=HLaAU5EQZrmYvGH8OxgNpkkOFe7_FLgcqOehYC4cWcw" 
   alt="Profile photo"
@@ -130,6 +152,15 @@
             <video autoplay loop muted>
                 <source src="owen1915.github.io/res/game.mp4" type="video/mp4">
               </video>    
+        </div>
+
+        <div class="textContainer">
+            <h1>2D Java Game Engine</h1>
+            <p>While building my own tile-based 2D game engine using Java Swing, I learned a ton about how games actually work under the hood. I figured out how to build a basic game loop, render tiles and sprites to the screen, handle user input, and manage things like collisions and movement. I used Graphics2D to draw everything, and had to really think about performance and how to structure my code so things stayed efficient and clean. I also got into stuff like level loading, simple animations, and organizing entities in a way that could scale if the game got bigger. Doing everything from scratch taught me a lot about the fundamentals, and it definitely made me better at solving problems and thinking like a systems designer.</p>
+            <img style="margin: 1rem;" 
+  src="https://cdn.discordapp.com/attachments/269236849002807297/1264342313052803092/image.png?ex=67edb489&is=67ec6309&hm=a7cdfb68b980b91dcfdd69fd419fc17c9cb66a334545bf0146cf5f9ccc7e5570&format=webp&quality=lossless&width=2152&height=1088  " 
+  alt="Profile photo"
+/>   
         </div>
     </div>
 
