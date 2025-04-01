@@ -4,46 +4,140 @@
     <title>owengoodman.com</title>
 
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;            /* Set the height to full viewport height */
+        html, body {
+            min-height: 100vh;
+            min-width: 100vw;
             margin: 0;
-            background: url("res/mars.jpg") no-repeat center center; /* Center the background image */
-            background-size: cover;   /* Stretch the background to cover the screen */
+            padding: 0;
+            background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+            overscroll-behavior: none;
         }
+
+        .pageContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* optional, centers horizontally */
+            gap: 5vh; /* space between components */
+            padding-bottom: 5vh;
+        }
+
+        .header {
+            font-size: 1.7rem;
+            text-align: center;
+        }
+
+        .tabContainer {
+            width: 5%;
+            background-color: black;
+        }
+
+        .headerContainer {
+            width: 100%;
+            border: 3px solid black;
+            background: #0a0606a7;
+            color: rgba(191, 191, 191, 0.912);
+        }
+
+        .textContainer {
+            width: 60vw;
+            height: auto;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white */
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .textContainer h1{
+            font-family: Courier;
+            font-size: 1.75rem;
+            font-weight: lighter;
+            text-align: center;
+            padding: 0;
+        }
+
+        .pictureText {
+            display: flex;
+            flex-direction: row;
+            align-items: center; /* vertically align image with text */
+            justify-content: space-between;
+            padding: 1rem;
+            gap: 2rem;
+        }
+
+        .pictureText p {
+            flex: 1;
+            max-width: 75%;
+            margin: 0;
+            text-align: left;
+            text-indent: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .pictureText img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0; /* prevents image from shrinking */
+        }
+
+        .textContainer p {
+            flex: 1;
+            margin: 1rem;
+            text-align: left;
+            text-indent: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .textContainer video {
+            width: 100%;
+            height: auto;
+
+        }
+
     </style>
 
-    <link rel="stylesheet" href="css/styles.css"> <!-- Link to the CSS file -->
-</head>
+</head> 
 <body>
-<div class="container index">
-    <div class="title">
-        <a href="https://owengoodman.com">
-            <h1>owengoodman.com</h1>
-        </a>
+
+    <div class="pageContainer">
+        <div class="headerContainer">
+            <div class="header">Owen Goodman</div>
+        </div>
+        <div class="textContainer">
+            <h1>About</h1>
+            <div class="pictureText">
+                <p>I'm a results-driven software developer with a passion for creating thoughtful, efficient, and user-focused solutions. I take pride in writing clean, maintainable code and approaching
+                     problems with a balance of creativity and precision. With experience across multiple layers of the development process, I thrive in environments that value continuous learning, 
+                     collaboration, and high-quality work. My goal is to build technology that makes an impact whether through solving real-world problems or enhancing the user experience.</p>
+                <img 
+  src="https://media.licdn.com/dms/image/v2/D4E03AQG5l2XDkwDDsQ/profile-displayphoto-shrink_400_400/B4EZXK.prIGwAk-/0/1742867177678?e=1749081600&v=beta&t=HLaAU5EQZrmYvGH8OxgNpkkOFe7_FLgcqOehYC4cWcw" 
+  alt="Profile photo"
+/>
+            </div>
+        </div>
+        <div class="textContainer">
+            <h1>Isometric 2D Game Engine</h1>
+            <p>As a personal project, I developed an isometric 2D game engine from the ground up, focusing on rendering, input handling, asset management, and layered tile-based world design. This experience challenged me to think critically about performance, architecture, and modular design principles. I gained a deeper understanding of graphics rendering pipelines, coordinate transformations for isometric projection, and efficient game loop implementation. Building this engine taught me how to break down complex systems into manageable components, reinforced the importance of clean abstractions, and ultimately strengthened my confidence in designing scalable, reusable software systems.</p>
+            <video autoplay loop muted>
+                <source src="owen1915.github.io/res/game.mp4" type="video/mp4">
+              </video>    
+        </div>
     </div>
-    <hr>
-    <button onclick="openPage('todo.html')" class="button">todo</button>
-</div>
-
-<div class="fixed-footer">
-    <div class="footer-text">
-        <a href="mailto:owengoodman3@gmail.com" style="color: inherit; text-decoration: none;">owengoodman3@gmail.com</a>
-    </div>
-</div>
 
 
-
-<script>
-    function openLink(link) {
-        window.open(link,'_blank');
-    }
-    function openPage(page) {
-        window.location.href = page;
-    }
-</script>
+    <script>
+        function openLink(link) {
+            window.open(link,'_blank');
+        }
+        function openPage(page) {
+            window.location.href = page;
+        }
+    </script>
 </body>
 </html>
