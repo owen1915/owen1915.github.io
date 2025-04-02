@@ -208,7 +208,7 @@
 
     <script>
         function loadTodoPage() {
-            fetch("todo.html")
+            fetch("todo.html?v=" + Date.now())
                 .then(res => res.text())
                 .then(html => {
                     document.open();

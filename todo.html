@@ -208,7 +208,7 @@
             });
         }
         function loadIndexPage() {
-            fetch("index.html")
+            fetch("index.html?v=" + Date.now())
                 .then(res => res.text())
                 .then(html => {
                     document.open();
