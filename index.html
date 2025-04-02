@@ -115,6 +115,22 @@
             height: auto;
             margin: 0 2.5% 2.5% 2.5%;
         }
+
+        .todoButton {
+            font-size: 1.1rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            border: 2px solid black;
+            background-color: white;
+            cursor: pointer;
+            margin-left: 1rem;
+            margin-right: 1rem;
+            display: block;
+        }
+
+        .todoButton:hover {
+            background-color: #e0e0e0;
+        }
     </style>
 </head>
 
@@ -148,7 +164,7 @@
                 Computer Science from Virginia Tech by Spring 27'.
             </p>
             <img style="margin: 1rem;"  src="https://cdn.discordapp.com/attachments/1053496833537757284/1356978661387014276/image.png?ex=67ee885c&is=67ed36dc&hm=5e86054e5e5cef5a656a64d233f6e763fc4fdbd209a513fc1138036b79f88a8e&" 
-                    alt="Profile photo" />
+                    alt="Education photo" />
         </div>
 
         <div class="textContainer">
@@ -172,6 +188,8 @@
                 user interface that interacts with my backend through HTTP requests. This project helped me understand full-stack development more clearly, especially how data flows between client and server, 
                 and how to build a functional, connected application from scratch.
             </p>
+            <!-- Button to load todo.html -->
+            <button class="todoButton" onclick="loadTodoPage()">Check out the Project</button>
             <img style="margin: 1rem;" 
                  src="https://cdn.discordapp.com/attachments/269236849002807297/1356967891362123907/Screenshot_2025-04-02_at_8.22.46_AM.png?ex=67ee7e54&is=67ed2cd4&hm=c296eb120a6fa6cd7b8f562ee4107af7f64a88dc21ef1a19ebe238adcd286f6d&" 
                  alt="Todo List Screenshot" />
@@ -189,12 +207,14 @@
     </div>
 
     <script>
-        function openLink(link) {
-            window.open(link, '_blank');
-        }
-
-        function openPage(page) {
-            window.location.href = page;
+        function loadTodoPage() {
+            fetch("todo.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.open();
+                    document.write(html);
+                    document.close();
+                });
         }
     </script>
 </body>
