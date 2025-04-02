@@ -74,10 +74,11 @@
         .pictureText {
             display: flex;
             flex-direction: row;
-            align-items: center; /* vertically align image with text */
+            align-items: center;
             justify-content: space-between;
             padding-right: 1rem;
-            gap: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap; /* allow wrapping */
         }
 
         .pictureText p {
@@ -91,11 +92,11 @@
         }
 
         .pictureText img {
-            width: 150px;
-            height: 150px;
+            width: 20vw; /* responsive to viewport width */
+            height: auto; /* maintains aspect ratio */
+            max-width: 150px; /* keeps it from getting too big on large screens */
             border-radius: 50%;
             object-fit: cover;
-            flex-shrink: 0; /* prevents image from shrinking */
         }
 
         .textContainer p {
