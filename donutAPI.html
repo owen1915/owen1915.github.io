@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut Stats</title>
+    <link rel="icon" href="owen1915.github.io/res/stormtrooper_icon-icons.com_76962.ico" type="image/x-icon" />
+</head>
+
+<body>
+    <input id="username" placeholder="Enter Username"/>
+    <button onclick="fetchStats()">Fetch API</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Money</th>
+                <th>Playtime</th>
+            </tr>
+        </thead>
+        <tbody id="player-stats"></tbody>
+    </table>
+
+    <script>
+        function fetchStats() {
+            fetch(`https://todoapi-eb3r-q.fly.dev/api/lookup/${document.getElementById("username").value}`)
+            .then(res => res.json())
+            .then(stats => {  
+                console.log("API response:", stats);  
+                if (stats.status === 0) {
+                    const list = document.getElementById("player-stats");
+                    list.innerHTML = "";
+
+                    const row = document.createElement("tr");
+                    
+                    const usernameCell = document.createElement("td");
+                    usernameCell.textContent = document.getElementById("username").value;
+
+                    const moneyCell = document.createElement("td");
+                    moneyCell.textContent = stats.result.money;
+
+                    const playtimeCell = document.createElement("td");
+                    playtimeCell.textContent = stats.result.playtime;
+
+                    row.append(usernameCell);
+                    row.append(moneyCell);
+                    row.append(playtimeCell);
+
+                    list.appendChild(row);
+                }
+            });
+            document.getElementById("username").value = "";
+        }    
+    </script>
+</body>
+</html>
