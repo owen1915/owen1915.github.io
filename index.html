@@ -134,24 +134,73 @@
 
         .contactWrapper {
             display: flex;
-            flex-direction: row;
-            text-align: center;
-            width: 100%;
-            gap: 2rem;
             justify-content: center;
+            align-items: center;
+            gap: 2rem;
         }
 
-        .contactWrapper img,
         .contactWrapper a {
-            max-width: 4%;
-            min-width: 40px;
-            height: auto;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
             background-color: white;
             border-radius: 50%;
-            padding: 0;
-            margin: 0;
-            line-height: 0;
-            display: inline-block;
+            transition: color 0.5s ease-in-out, --fill 1s linear;
+        }
+
+        .contactWrapper a::after {
+            position: absolute;
+            /*z-index: -1;*/
+            content: '';
+            inset: -3px;
+            border-radius: inherit;
+            background: conic-gradient
+            (greenyellow var(--fill), transparent var(--fill));
+        }
+
+        @property --fill {
+            syntax: '<percentage>';
+            inherits: true;
+            initial-value: 0%;
+        }
+
+        .contactWrapper a:hover {
+            color: greenyellow;
+            --fill: 100%;
+        }
+
+        .contactWrapper img {
+            width: 60px;
+            height: 60px;
+            padding: 8px;
+            
+            object-fit: contain;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        #emailCopied {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #222;
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+
+        #emailCopied.show {
+            opacity: 1;
         }
 
     </style>
@@ -229,12 +278,19 @@
         </div>
 
         <div class="contactWrapper">
-            <a href="mailto:owengoodman3@gmail.com">
-                <img src="https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png" />
+            <a onclick="copyEmail()" title="Copy email to clipboard">
+                <img src="https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png" alt="Email icon" />
             </a>
-            <img src="https://www.shareicon.net/data/2016/07/13/606786_linkedin_512x512.png"/>
-            <img src="https://sdmntprwestus.oaiusercontent.com/files/00000000-8a84-5230-8a29-f70b32f6dc1e/raw?se=2025-04-03T02%3A38%3A47Z&sp=r&sv=2024-08-04&sr=b&scid=e879d8fd-28cb-5531-b785-c5642c3750df&skoid=51916beb-8d6a-49b8-8b29-ca48ed86557e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-02T16%3A08%3A24Z&ske=2025-04-03T16%3A08%3A24Z&sks=b&skv=2024-08-04&sig=PRKP35rbUKYvb4pPYc/OWBwqmiI2QHRU1EtpScSXx5U%3D"/>
+            <a href="https://www.linkedin.com/in/owen-goodman/" target="_blank" title="LinkedIn">
+                <img src="https://www.shareicon.net/data/2016/07/13/606786_linkedin_512x512.png" alt="LinkedIn icon" />
+            </a>
+            <a href="https://github.com/owen1915" target="_blank" title="GitHub">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" />
+            </a>
         </div>
+        
+        <div id="emailCopied">Email copied to clipboard!</div>
+
     </div>
 
     <script>
@@ -246,6 +302,17 @@
                     document.write(html);
                     document.close();
                 });
+        }
+        function copyEmail() {
+            navigator.clipboard.writeText("owengoodman3@gmail.com").then(() => {
+                const copiedMsg = document.getElementById("emailCopied");
+                copiedMsg.classList.add("show");
+                setTimeout(() => {
+                    copiedMsg.classList.remove("show");
+                }, 1500);
+            }).catch(err => {
+                console.error("Failed to copy: ", err);
+            });
         }
     </script>
 </body>
