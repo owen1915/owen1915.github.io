@@ -137,6 +137,7 @@
             justify-content: center;
             align-items: center;
             gap: 2rem;
+            margin-top: 0;
         }
 
         .contactWrapper a {
@@ -144,6 +145,7 @@
             border-radius: 50%;
             width: 60px;
             height: 60px;
+            margin-top: 0;
         }
 
         .contactWrapper a:hover {
@@ -184,6 +186,11 @@
         #emailCopied.show {
             opacity: 1;
         }
+
+        .contactContainer {
+            display: flex;
+            flex-direction: column;
+        } 
 
     </style>
 </head>
@@ -258,18 +265,20 @@
                  src="https://i.imgur.com/LxUgiiw.png" 
                  alt="2D Engine Screenshot" />
         </div>
-
-        <div class="header">Contact</div>
-        <div class="contactWrapper">
-            <a onclick="copyEmail()" title="Copy email to clipboard">
-                <img src="https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png" alt="Email icon" />
-            </a>
-            <a href="https://www.linkedin.com/in/owen-goodman/" target="_blank" title="LinkedIn">
-                <img src="https://www.shareicon.net/data/2016/07/13/606786_linkedin_512x512.png" alt="LinkedIn icon" />
-            </a>
-            <a href="https://github.com/owen1915" target="_blank" title="GitHub">
-                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" />
-            </a>
+        
+        <div class="contactContainer">
+            <div class="header" style="margin-bottom: 1rem;">Contact</div>
+            <div class="contactWrapper">
+                <a onclick="copyEmail()" title="Copy email to clipboard">
+                    <img src="https://static.vecteezy.com/system/resources/previews/020/009/614/non_2x/email-and-mail-icon-black-free-png.png" alt="Email icon" />
+                </a>
+                <a href="https://www.linkedin.com/in/owen-goodman/" target="_blank" title="LinkedIn">
+                    <img src="https://www.shareicon.net/data/2016/07/13/606786_linkedin_512x512.png" alt="LinkedIn icon" />
+                </a>
+                <a href="https://github.com/owen1915" target="_blank" title="GitHub">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub icon" />
+                </a>
+            </div>
         </div>
         
         <div id="emailCopied">Email copied to clipboard!</div>
