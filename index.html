@@ -133,51 +133,40 @@
         }
 
         .contactWrapper {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
 
-    .contactWrapper a {
-        --fill-angle: 0deg;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: white;
-        position: relative;
-        transition: --fill-angle 1s linear;
-    }
+        .contactWrapper a {
+            background-color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
 
-    .contactWrapper a::after {
-        content: "";
-        position: absolute;
-        inset: -3px;
-        border-radius: 50%;
-        z-index: -1;
-        background: conic-gradient(greenyellow var(--fill-angle), transparent 0deg);
-        mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black 100%);
-        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black 100%);
-    }
+        .contactWrapper a:hover {
+            background-color: rgb(0, 0, 0);
+        }
 
-    .contactWrapper a:hover {
-        --fill-angle: 360deg;
-    }
+        .contactWrapper img:hover {
+            filter: brightness(0) invert(1);
+        }
 
-    .contactWrapper img {
-        width: 60px;
-        height: 60px;
-        padding: 8px;
-        object-fit: contain;
-        box-sizing: border-box;
-    }
+        .contactWrapper img {
+            width: 60px;
+            height: 60px;
+            padding: 8px;
+            border-radius: 50%;
+            object-fit: contain;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
 
         #emailCopied {
             position: fixed;
-            top: 50%;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             background-color: #222;
@@ -190,7 +179,7 @@
             transition: opacity 0.3s ease;
             z-index: 999;
         }
-
+        
         #emailCopied.show {
             opacity: 1;
         }
@@ -282,7 +271,6 @@
         </div>
         
         <div id="emailCopied">Email copied to clipboard!</div>
-
     </div>
 
     <script>
@@ -296,16 +284,12 @@
                 });
         }
         function copyEmail() {
-            navigator.clipboard.writeText("owengoodman3@gmail.com").then(() => {
-                const copiedMsg = document.getElementById("emailCopied");
-                copiedMsg.classList.add("show");
-                setTimeout(() => {
-                    copiedMsg.classList.remove("show");
-                }, 1500);
-            }).catch(err => {
-                console.error("Failed to copy: ", err);
-            });
-        }
+        navigator.clipboard.writeText("owengoodman3@gmail.com").then(() => {
+            alert("Email copied to clipboard!");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
+    }
     </script>
 </body>
 </html>
