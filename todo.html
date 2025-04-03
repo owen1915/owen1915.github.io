@@ -8,16 +8,23 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            min-width: 100vw;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+            overscroll-behavior: none;
         }
         .question-container {
             max-width: 70%;
             margin: 0 auto;
             width: 100%;
             margin-top: 10px;
-            background-color: rgb(206, 202, 202);
+            background-color: rgba(7, 65, 104, 0.3);
             border: 2px solid black;
             text-align: center;
             padding-bottom: 5px;
+
         }
         .question-container h2 {
             margin-bottom: 5px;
@@ -53,8 +60,12 @@
             background-color: #f2f2f2;
         }
 
+        #todo-list tr:nth-child(odd) {
+            background-color: #b8b7b7ad;
+        }
+
         #todo-list tr:hover {
-            background-color: lightblue;
+            background-color: rgba(16, 217, 86, 0.59);
         }
 
         .table-wrapper {
