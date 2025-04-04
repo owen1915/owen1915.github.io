@@ -32,10 +32,11 @@
                     const row = document.createElement("tr");
                     
                     const usernameCell = document.createElement("td");
-                    usernameCell.textContent = document.getElementById("username");
+                    usernameCell.textContent = document.getElementById("username").value; 
+
 
                     const moneyCell = document.createElement("td");
-                    moneyCell.textContent = stats.result.money.toLocaleString();
+                    moneyCell.textContent = Number(stats.result.money).toLocaleString();
 
                     const playtimeCell = document.createElement("td");
                     const ticks = Number(stats.result.playtime); // assuming it's a string
