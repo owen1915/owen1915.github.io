@@ -5,21 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donut Stats</title>
     <link rel="icon" href="owen1915.github.io/res/stormtrooper_icon-icons.com_76962.ico" type="image/x-icon" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            min-width: 100vw;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding: 0;
+            overscroll-behavior: none;
+        }
+
+        .wrapper {
+            padding: 10px;
+        }
+
+        .inputC {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border: 2px solid black;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .inputC button {
+            border: none;
+            cursor: pointer;
+            width: 50%;
+            padding: 10px;
+            background-color: limegreen;
+        }
+
+        .inputC input {
+            padding: 10px;
+            border: none;
+            width: 50%;
+        }
+        
+        .inputC input:focus {
+            outline: none;
+        }
+
+        table tr th {
+            top: 0;
+            z-index: 1;
+            padding: 16px 24px;
+        }
+
+        table tr th:nth-child(even) {
+            background-color: #1b618aee;
+        }
+        
+        table tr th:nth-child(odd) {
+            background-color: #1b618a;
+        }
+
+        table {
+            margin-top: 1rem;
+            border-collapse: separate; 
+            border-spacing: 0;
+            width: 100%;
+            border: 2px solid black;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table td {
+            padding: 12px 24px;
+        }
+
+        table td:nth-child(even) {
+            background-color: rgba(46, 49, 48, 0.585);
+        }
+
+        table td:nth-child(odd) {
+            background-color: rgba(77, 81, 80, 0.737);
+        }
+        
+    </style>
 </head>
 
 <body>
-    <input id="username" placeholder="Enter Username"/>
-    <button onclick="fetchStats()">Fetch API</button>
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Money</th>
-                <th>Playtime</th>
-            </tr>
-        </thead>
-        <tbody id="player-stats"></tbody>
-    </table>
+    <div class="wrapper">
+        <div class="inputC">
+            <input id="username" placeholder="Enter Username"/>
+            <button onclick="fetchStats()">Get Stats</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Money</th>
+                    <th>Playtime</th>
+                </tr>
+            </thead>
+            <tbody id="player-stats"></tbody>
+        </table>
+    </div>
 
     <script>
         function fetchStats() {
@@ -34,7 +119,7 @@
                     const usernameCell = document.createElement("td");
                     usernameCell.textContent = document.getElementById("username").value; 
                     document.getElementById("username").value = "";
-                    
+
                     const moneyCell = document.createElement("td");
                     moneyCell.textContent = Number(stats.result.money).toLocaleString();
 
