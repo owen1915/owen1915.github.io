@@ -33,8 +33,8 @@
                     
                     const usernameCell = document.createElement("td");
                     usernameCell.textContent = document.getElementById("username").value; 
-
-
+                    document.getElementById("username").value = "";
+                    
                     const moneyCell = document.createElement("td");
                     moneyCell.textContent = Number(stats.result.money).toLocaleString();
 
@@ -56,7 +56,6 @@
 
                     list.appendChild(row);
             });
-            document.getElementById("username").value = "";
         }    
     </script>
 </body>
