@@ -20,6 +20,14 @@
 
         .wrapper {
             padding: 10px;
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tablewrapper {
+            overflow-x: auto
         }
 
         .inputC {
@@ -29,6 +37,8 @@
             border: 2px solid black;
             border-radius: 12px;
             overflow: hidden;
+            width: fit-content;
+            min-width: 20%;
         }
 
         .inputC button {
@@ -74,17 +84,33 @@
         }
 
         table td {
-            padding: 12px 24px;
+            padding: 10px 16px;
         }
 
         table td:nth-child(even) {
-            background-color: rgba(46, 49, 48, 0.585);
+            background-color: rgba(150, 155, 160, 0.585);
         }
 
         table td:nth-child(odd) {
-            background-color: rgba(77, 81, 80, 0.737);
+            background-color: rgba(156, 162, 160, 0.585);
         }
-        
+
+        table tbody tr:not(:last-child) td {
+            border-bottom: 2px solid #0c0b0b;
+        }
+
+        table tbody td:not(:last-child) td {
+            border-right: 2px solid #0c0b0b;
+        }
+
+        table thead th {
+            border-bottom: 2px solid #0c0b0b;
+        }
+
+        table thead th:not(:last-child) {
+            border-right: 2px solid #0c0b0b;
+        }
+
     </style>
 </head>
 
@@ -94,16 +120,26 @@
             <input id="username" placeholder="Enter Username"/>
             <button onclick="fetchStats()">Get Stats</button>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Money</th>
-                    <th>Playtime</th>
-                </tr>
-            </thead>
-            <tbody id="player-stats"></tbody>
-        </table>
+        <div class="tablewrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Money</th>
+                        <th>Playtime</th>
+                        <th>Broken Blocks</th>
+                        <th>Deaths</th>
+                        <th>Players Killed</th>
+                        <th>Mobs Killed</th>
+                        <th>Placed Blocks</th>
+                        <th>Money Made</th>
+                        <th>Money Spent</th>
+                        <th>Shards</th>
+                    </tr>
+                </thead>
+                <tbody id="player-stats"></tbody>
+            </table>
+        </div>
     </div>
 
     <script>
@@ -112,7 +148,6 @@
             .then(res => res.json())
             .then(stats => { 
                 const list = document.getElementById("player-stats");
-                    list.innerHTML = "";
 
                     const row = document.createElement("tr");
                     
@@ -135,9 +170,41 @@
                     const formattedPlaytime = `${days}d ${hours}h ${minutes}m ${seconds}s`;
                     playtimeCell.textContent = formattedPlaytime;
 
+                    const brokenblocksCell = document.createElement("td");
+                    brokenblocksCell.textContent = Number(stats.result.broken_blocks).toLocaleString();
+
+                    const deathsCell = document.createElement("td");
+                    deathsCell.textContent = Number(stats.result.deaths).toLocaleString();
+                
+                    const killsCell = document.createElement("td");
+                    killsCell.textContent = Number(stats.result.kills).toLocaleString();
+                
+                    const mobsCell = document.createElement("td");
+                    mobsCell.textContent = Number(stats.result.mobs_killed).toLocaleString();
+                
+                    const placedBlocks = document.createElement("td");
+                    placedBlocks.textContent = Number(stats.result.placed_blocks).toLocaleString();
+                
+                    const moneymadeCell = document.createElement("td");
+                    moneymadeCell.textContent = Number(stats.result.money_made_from_sell).toLocaleString();
+                
+                    const moneyspentCell = document.createElement("td");
+                    moneyspentCell.textContent = Number(stats.result.money_spent_on_shop).toLocaleString();
+                
+                    const shardsCell = document.createElement("td");
+                    shardsCell.textContent = Number(stats.result.shards).toLocaleString();
+
                     row.append(usernameCell);
                     row.append(moneyCell);
                     row.append(playtimeCell);
+                    row.append(brokenblocksCell);
+                    row.append(deathsCell);
+                    row.append(killsCell);
+                    row.append(mobsCell);
+                    row.append(placedBlocks);
+                    row.append(moneymadeCell);
+                    row.append(moneyspentCell);
+                    row.append(shardsCell);
 
                     list.appendChild(row);
             });
