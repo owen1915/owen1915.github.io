@@ -25,10 +25,8 @@
         function fetchStats() {
             fetch(`https://todoapi-eb3r-q.fly.dev/donut/stats/${document.getElementById("username").value}`)
             .then(res => res.json())
-            .then(stats => {  
-                console.log("API response:", stats);  
-                if (stats.status === 0) { 
-                    const list = document.getElementById("player-stats");
+            .then(stats => { 
+                const list = document.getElementById("player-stats");
                     list.innerHTML = "";
 
                     const row = document.createElement("tr");
@@ -47,7 +45,6 @@
                     row.append(playtimeCell);
 
                     list.appendChild(row);
-                }
             });
             document.getElementById("username").value = "";
         }    
