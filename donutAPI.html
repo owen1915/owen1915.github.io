@@ -23,7 +23,7 @@
 
     <script>
         function fetchStats() {
-            fetch(`https://todoapi-eb3r-q.fly.dev/api/lookup/${document.getElementById("username").value}`)
+            fetch(`https://todoapi-eb3r-q.fly.dev/lookup/${document.getElementById("username").value}`)
             .then(res => res.json())
             .then(stats => {  
                 console.log("API response:", stats);  
