@@ -35,10 +35,19 @@
                     usernameCell.textContent = document.getElementById("username");
 
                     const moneyCell = document.createElement("td");
-                    moneyCell.textContent = stats.result.money;
+                    moneyCell.textContent = stats.result.money.toLocaleString();
 
                     const playtimeCell = document.createElement("td");
-                    playtimeCell.textContent = stats.result.playtime;
+                    const ticks = Number(stats.result.playtime); // assuming it's a string
+                    const totalSeconds = Math.floor(ticks / 20);
+
+                    const days = Math.floor(totalSeconds / 86400);
+                    const hours = Math.floor((totalSeconds % 86400) / 3600);
+                    const minutes = Math.floor((totalSeconds % 3600) / 60);
+                    const seconds = totalSeconds % 60;
+
+                    const formattedPlaytime = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                    playtimeCell.textContent = formattedPlaytime;
 
                     row.append(usernameCell);
                     row.append(moneyCell);
