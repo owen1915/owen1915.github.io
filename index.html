@@ -192,6 +192,24 @@
             flex-direction: column;
         } 
 
+        .pictureWithText {
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
+        }
+
+        .pictureWithText img {
+            inline-size: 200px;
+            aspect-ratio: 1;
+            object-fit: cover;
+
+            border-radius: 100vw;
+        }
+
+        .pictureWithText p {
+            
+        }
+
     </style>
 </head>
 
@@ -205,13 +223,13 @@
 
         <div class="textContainer">
             <h1>About</h1>
-            <div class="pictureText">
+            <div class="pictureWithText">
                 <p>
                     I'm a results-driven software developer with a passion for creating thoughtful, efficient, and user-focused solutions. I take pride in writing clean, maintainable code and approaching
                     problems with a balance of creativity and precision. With experience across multiple layers of the development process, I thrive in environments that value continuous learning,
                     collaboration, and high-quality work. My goal is to build technology that makes an impact whether through solving real-world problems or enhancing the user experience.
                 </p>
-                <img src="https://i.imgur.com/PBzo5F3.jpeg" 
+                <img src=".\res\ojg.jpeg" 
                      alt="Profile photo" />
             </div>
         </div>
